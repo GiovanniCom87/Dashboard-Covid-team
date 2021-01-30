@@ -119,6 +119,9 @@ document.querySelectorAll('[data-region').forEach(el=>{
                               
             <div class="grid grid-cols-1 ">
                 <div class="mb-2">
+                    <p class="float-right ">
+                        <i id="closure" class="far fa-times-circle fa-2x text-gray-400 pointer"></i>
+                    </p>
                     <p class="text-4xl text-main">${dataAboutRegion.denominazione_regione}</p>
                 </div>
                 <div class="mb-5">
@@ -276,7 +279,12 @@ document.querySelectorAll('[data-trend').forEach(el => {
         modalContent.innerHTML = 
         `
         <div class="grid grid-rows-2">
-            <p class="text-2xl text-main">${set.replace(/_/g," ").toUpperCase()}</p>
+            <div class = "my-2">
+                <p class="float-right">
+                    <i id="closure" class="far fa-times-circle fa-2x text-gray-400 pointer"></i>
+                </p>
+                <p class="text-2xl text-main">${set.replace(/_/g," ").toUpperCase()}</p>
+            </div>
             <hr>
             <canvas id="totalTrend" width="400" height="400"></canvas>
             </div>
@@ -380,7 +388,12 @@ pieTrigger.addEventListener('click', () => {
     `
     
      <div class="">
-         <h2 class="text-main text-4xl mb-2"> Grafico positivi nazionali </h2>
+        <div class = "my-2">
+            <p class="float-right">
+                <i id="closure" class="far fa-times-circle fa-2x text-gray-400 pointer"></i>
+            </p>
+            <h2 class="text-main text-4xl mb-2"> Grafico positivi nazionali </h2>
+        </div>
          <hr>
          <canvas id="pieChart" class="mt-5" width="400" height="400"></canvas>        
      </div>
@@ -431,9 +444,10 @@ pieTrigger.addEventListener('click', () => {
 
  //Ogni click al di fuori della modale la farà chiudere
  window.addEventListener('click',function(e){
-    if(e.target == modal){
-        modal.classList.remove('active')
-    }
+    let closure = document.querySelector('#closure')
+        if(e.target == modal || e.target == closure){
+            modal.classList.remove('active')
+        }
 })
 
 })       
